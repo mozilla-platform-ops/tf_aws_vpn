@@ -3,6 +3,10 @@ Terraform AWS VPN module
 
 A Terraform module (or standalone) to create a VPC and VPN in AWS.
 
+*NB*: AWS will provide a *random* /30 IPv4 subnet in RFC-1918 space for the ipsec tunnel.
+If you have multiple tunnels (to other VPCs) there is *no* guarantee that they won't use a /30
+already in use (by you). If you find that you have an address conflict, you will need to destroy
+the VPN connection and re-create it (e.g. `terraform destroy -target=aws_vpn_connection`)
 
 Input Variables
 ---------------
@@ -53,6 +57,7 @@ Outputs
 - `Customer gateway` - Customer gateway ID
 - `VPN gateway` - VPN gateway ID
 - `VPN gateway config` - XML configuration for your hardware VPN
+
 
 Authors
 =======
