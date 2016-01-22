@@ -3,8 +3,8 @@ Terraform AWS VPN module
 
 A Terraform module (or standalone) to create a VPC and VPN in AWS.
 
-*NB*: AWS will provide a *random* /30 IPv4 subnet in RFC-1918 space for the ipsec tunnel.
-If you have multiple tunnels (to other VPCs) there is *no* guarantee that they won't use a /30
+**NB**: AWS will provide a **random** /30 IPv4 subnet in RFC-1918 space for the ipsec tunnel.
+If you have multiple tunnels (to other VPCs) there is **no** guarantee that they won't use a /30
 already in use (by you). If you find that you have an address conflict, you will need to destroy
 the VPN connection and re-create it (e.g. `terraform destroy -target=aws_vpn_connection`)
 
@@ -36,6 +36,7 @@ module "vpc" {
   cidr = "10.0.0.0/16"
   private_subnets = "10.0.1.0/24,10.0.2.0/24,10.0.3.0/24"
   azs = "us-west-2a,us-west-2b,us-west-2c"
+
   vpn_bgp_asn = "65000"
   vpn_ip_address = "1.2.3.4"
   vpn_dest_cidr_block = "192.168.1.0/24"
