@@ -29,7 +29,7 @@ Modules Usage
 
 ```js
 module "vpc" {
-  source = "github.com/klibby/tf_aws_vpn"
+  source = "github.com/mozilla-platform-ops/tf_aws_vpn"
 
   name = "my-vpc"
 
