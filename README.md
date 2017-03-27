@@ -11,7 +11,7 @@ the VPN connection and re-create it (e.g. `terraform destroy -target=aws_vpn_con
 Input Variables
 ---------------
 - `name` - Name of the VPC (will be used in tags)
-- `cidr` - CIDR block for the VPC
+- `cidr_block` - CIDR block for the VPC
 - `public_subnets` - Comma separated list of public subnet CIDR blocks
 - `private_subnets` - Comma separated list of private subnet CIDR blocks
 - `zones` - Comma separated lists of AZs in which to distribute subnets
@@ -33,9 +33,9 @@ module "vpc" {
 
   name = "my-vpc"
 
-  cidr = "10.0.0.0/16"
+  cidr_block = "10.0.0.0/16"
   private_subnets = "10.0.1.0/24,10.0.2.0/24,10.0.3.0/24"
-  azs = "us-west-2a,us-west-2b,us-west-2c"
+  zones = "us-west-2a,us-west-2b,us-west-2c"
 
   vpn_bgp_asn = "65000"
   vpn_ip_address = "1.2.3.4"
